@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Check if a directory name was specified
+if [ $# -eq 0 ]; then
+    echo "Error: No directory name specified."
+    exit 1
+fi
+
+# Set the directory name
+dir=$1
+
+# Set the path to the current working directory
+path=$(pwd)
+
+# Create the full path to the directory
+full_path="$path/$dir"
+
+# Check if the directory already exists
+if [ -d "$full_path" ]; then
+    echo "Error: Directory '$full_path' already exists."
+    exit 1
+fi
+
+# Create the directory and navigate into it
+mkdir "$full_path" && cd "$full_path"
